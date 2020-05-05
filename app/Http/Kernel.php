@@ -60,8 +60,9 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'admin' => \App\Http\Middleware\UserAdmin::class,
     ];
-
+    // La clase de admin permite darle seguridad a la aplicacion, metiendo los links en las rutas en el middleware
     /**
      * The priority-sorted list of middleware.
      *

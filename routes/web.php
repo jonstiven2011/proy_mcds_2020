@@ -7,6 +7,16 @@
 //Login de la pagina
 Auth::routes();
 
+//Middleware
+Route::group(['middleware' => 'admin'], function(){
+    //Ruta para llamar todos los campos de usuarios
+    Route::resource('users', 'UserController');
+    //Ruta de Categoria
+    Route::resource('categories', 'CategoriaController');
+    //Ruta de Articulos
+    Route::resource('articles', 'ArticleController');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 //******************************************************************* */
@@ -15,9 +25,6 @@ Route::resource('/', 'WelcomeController');
 Route::post('loadcat', 'WelcomeController@loadcat');
 
 //***************************USERS********************************************* */
-
-//Ruta para llamar todos los campos de usuarios
-Route::resource('users', 'UserController');
 
 //Ruta vista Importar Usuarios
 Route::get('import', 'UserController@importView');
@@ -33,9 +40,6 @@ Route::get('generate/excel/users', 'UserController@excel');
 
 //********************************CATEGORIES*************************************** */
 
-//Ruta de Categoria
-Route::resource('categories', 'CategoriaController');
-
 // Genera reportes en PDF Categories
 Route::get('generate/pdf/categories', 'CategoriaController@pdf');
 
@@ -44,8 +48,7 @@ Route::get('generate/excel/categories', 'CategoriaController@excel');
 
 //********************************ARTICLES*************************************** */
 
-//Ruta de Articulos
-Route::resource('articles', 'ArticleController');
+
 
 // Genera reportes en PDF Categories
 Route::get('generate/pdf/articles', 'ArticleController@pdf');

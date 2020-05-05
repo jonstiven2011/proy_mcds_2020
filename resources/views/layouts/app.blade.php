@@ -151,12 +151,20 @@
                 }
             })
         });
-        // *****************Mensaje****************
+        // *****************Mensaje De Correcto****************
         @if (session('message'))
             Swal.fire(
                 'Felicitaciones',
                 '{{ session('message') }}',
                 'success'
+            );
+        @endif
+        // /*********************Mensage Error**************
+        @if (session('error'))
+            Swal.fire(
+                'Problemas de Acceso',
+                '{{ session('error') }}',
+                'error'
             );
         @endif
         
