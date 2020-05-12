@@ -19,8 +19,17 @@
                 <i class="fa fa-file-excel"></i> 
                 Generar Reporte EXCEL
             </a>
+            {{-- Busqueda --}}
             <br><br>
-         {{-- Tabla --}}
+            <div class="form-inline">
+                <input type="search" id="qsearch" name="qsearch" class="form-control" autocomplete="off" placeholder="Buscar...">  
+            </div>
+            <br>
+         {{-- Carga la imagen "d-none" ocula la imagen o cualquier cosa--}}
+         <div class="loading d-none text-center" >
+            <img src="{{asset('imgs/loading.gif')}}" width="100px">
+         </div>
+           {{-- Tabla --}}
             <table class="table table-inverse table-striped table-bordered">
                 <thead>
                     <tr>
@@ -30,7 +39,8 @@
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
+                {{-- users-content permite actualizar la tabla cuando estoy buscando --}}
+                <tbody id="users-content">
                     @foreach ($users as $user)
                         <tr>
                             <td>{{$user->fullname}}</td>

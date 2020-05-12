@@ -15,6 +15,9 @@ Route::group(['middleware' => 'admin'], function(){
     Route::resource('categories', 'CategoriaController');
     //Ruta de Articulos
     Route::resource('articles', 'ArticleController');
+    //Busqueda AJAX
+    Route::post('users/search', 'UserController@search');
+
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -64,6 +67,10 @@ Route::get('editor/index', 'ArticleController@index');
 Route::get('editor/create', 'ArticleController@editorcreate');
 Route::get('editor/{id}', 'ArticleController@showeditor');
 Route::get('editor/{id}/edit', 'ArticleController@updarticle');
+
+
+
+
 
 
 

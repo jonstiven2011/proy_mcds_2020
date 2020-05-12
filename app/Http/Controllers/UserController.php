@@ -194,4 +194,12 @@ class UserController extends Controller
         //dd($id);
         return view('users.mydata')->with('user', $user);
     } 
+
+    // Controlador para realizar las busquedas en index con el campo search
+    // En el modelo se hace el scope
+    public function search(Request $request)
+    {
+        $users = User::names($request->q)->orderBy('id','ASC')->paginate(10);
+        return view('users.search')->with('users',$users);
+    }
 }

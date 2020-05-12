@@ -49,4 +49,14 @@ class User extends Authenticatable
         return $this->hasMany('App\Article');
     }
 
+    // Esta parte permite obtener los datos de users para realizar la busqueda con scope,
+    // se debe poner el nombre despues de scope
+
+    public function scopeNames($users, $q)
+    {
+        if(trim($q)){
+            $users->where('fullname', 'LIKE', "%$q%");
+        }
+    }
+
 }

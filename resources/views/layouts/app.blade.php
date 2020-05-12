@@ -215,7 +215,25 @@
                     },1200);
                 });
             });
-        
+        // Para realizar las busquedas
+        $('body').on('keyup','#qsearch', function(event){
+            event.preventDefault();
+            $q = $(this).val();
+            $t = $('input[name=_token]').val();
+            $('.loading').removeClass('d-none');
+            $('.table').hide();
+            $setTout = setTimeout(function(){
+                clearTimeout($setTout);
+                $.post('users/search',
+                {q: $q, _token: $t},
+                function(data){
+                    $('.loading').addClass('d-none');
+                    $('#users-content').html(data);
+                    $('.table').fadeIn('slow');
+                });
+            }, 1800);
+        });
+        // Fin de busqueda       
     });
     </script>
 </body>
