@@ -17,6 +17,7 @@ Route::group(['middleware' => 'admin'], function(){
     Route::resource('articles', 'ArticleController');
     //Busqueda AJAX
     Route::post('users/search', 'UserController@search');
+    Route::post('articles/search', 'ArticleController@search');
 
 });
 

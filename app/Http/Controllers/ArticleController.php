@@ -198,6 +198,14 @@ class ArticleController extends Controller
         return \Excel::download( new ArticlesExport, 'articles.xlsx');
     }
 
+    // Controlador para realizar las busquedas en index con el campo search
+    // Se de ir al modelo y se hace el scope
+    public function search(Request $request)
+    {
+        $articles = Article::names($request->q)->orderBy('id','ASC')->paginate(10);
+        return view('articles.search')->with('articles',$articles);
+    }
+
 // ***********************************FUNCIONES DEL EDITOR************************
     // Ruta de MyArticles
     public function myarticles()

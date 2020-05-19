@@ -22,10 +22,15 @@
             {{-- Busqueda --}}
             <br><br>
             <div class="form-inline">
-                <input type="search" id="qsearch" name="qsearch" class="form-control" autocomplete="off" placeholder="Buscar...">  
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-search"></i></span>
+                    </div>
+                    <input type="search" id="qsearch" name="qsearch" class="form-control" autocomplete="off" placeholder="Buscar...">  
+                </div>
             </div>
             <br>
-         {{-- Carga la imagen "d-none" ocula la imagen o cualquier cosa--}}
+         {{-- Carga la imagen "d-none" oculta la imagen o cualquier cosa--}}
          <div class="loading d-none text-center" >
             <img src="{{asset('imgs/loading.gif')}}" width="100px">
          </div>
@@ -39,7 +44,7 @@
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                {{-- users-content permite actualizar la tabla cuando estoy buscando --}}
+                {{-- Se requiere de users-content permite actualizar la tabla cuando estoy buscando --}}
                 <tbody id="users-content">
                     @foreach ($users as $user)
                         <tr>

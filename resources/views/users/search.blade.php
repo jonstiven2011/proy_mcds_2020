@@ -1,5 +1,5 @@
 {{--  --}}
-@foreach ($users as $user)
+@forelse ($users as $user)
     <tr>
         <td>{{$user->fullname}}</td>
         <td>{{$user->email}}</td>
@@ -23,4 +23,11 @@
             </form>
         </td>
     </tr>
-@endforeach
+{{-- Permite verficar si hay usuarios o correos con esa letra o nombre --}}
+@empty
+<tr>
+    <td colspan="4" class="bg-info text-light">
+    No hay Usuarios con ese nombre o correo electrónico!
+    </td>
+</tr>
+@endforelse

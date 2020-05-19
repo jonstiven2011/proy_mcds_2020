@@ -29,5 +29,17 @@ class Article extends Model
     public function category() {
     	return $this->belongsTo('App\Category');
     }
+
+    // Esta parte permite obtener los datos de users para realizar la busqueda con scope,
+    //Antes de esto se debe obtener la funcion en el controller para que permita obtener los datos
+    //En ella se trae la variable llamada names y aqui en el scope se agrega con ella ej->scopeNames
+    // se debe poner el nombre despues de scope
+
+    public function scopeNames($articles, $q)
+    {
+        if(trim($q)){
+            $articles->where('name', 'LIKE', "%$q%");
+        }
+    }
     
 }

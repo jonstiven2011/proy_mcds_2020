@@ -1,4 +1,4 @@
-@if (isset($cat))
+@if(isset($cat))
 
         <div class="card">   
             <div class="card-body">
@@ -37,4 +37,5 @@
             </div> 
         @endforeach     
 @endif                                  
-    
+
+

@@ -201,7 +201,7 @@
             };
             reader.readAsDataURL(this.files[0]);
         });
-        //-----------------------------------
+        //-----------------Realizar el cargado de .gif del select principal------------------
         $('body').on('change', '#catid', function(event) {
                 event.preventDefault();
                 $cid = $(this).val();
@@ -215,7 +215,8 @@
                     },1200);
                 });
             });
-        // Para realizar las busquedas
+        
+        // Para realizar las busquedas, Filtro de Users
         $('body').on('keyup','#qsearch', function(event){
             event.preventDefault();
             $q = $(this).val();
@@ -233,7 +234,27 @@
                 });
             }, 1800);
         });
-        // Fin de busqueda       
+        // Fin de busqueda    
+
+        // Para realizar las busquedas, Filtro de Categorias
+        $('body').on('keyup','#qqsearch', function(event){
+            event.preventDefault();
+            $q = $(this).val();
+            $t = $('input[name=_token]').val();
+            $('.loading').removeClass('d-none');
+            $('.table').hide();
+            $setTout = setTimeout(function(){
+                clearTimeout($setTout);
+                $.post('articles/search',
+                {q: $q, _token: $t},
+                function(data){
+                    $('.loading').addClass('d-none');
+                    $('#articles-content').html(data);
+                    $('.table').fadeIn('slow');
+                });
+            }, 1800);
+        });
+        // Fin de busqueda     
     });
     </script>
 </body>

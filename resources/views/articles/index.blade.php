@@ -18,6 +18,20 @@
                     Generar Reporte EXCEL
                 </a>
                 <br><br>
+                {{-- Busqueda Articulo --}}
+                <div class="form-inline">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-search"></i></span>
+                        </div>
+                        <input type="search" id="qqsearch" name="qqsearch" class="form-control" autocomplete="off" placeholder="Buscar...">  
+                    </div>
+                </div>
+                @csrf
+                {{-- Carga la imagen "d-none" oculta la imagen o cualquier cosa--}}
+                <div class="loading d-none text-center" >
+                    <img src="{{asset('imgs/loading.gif')}}" width="100px">
+                </div>
          {{-- Tabla --}}
             <table class="table table-inverse table-striped table-bordered">
                 <thead>
@@ -28,7 +42,8 @@
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
+                {{-- Se requiere de articles-content, esto permite actualizar la tabla cuando estoy buscando y se llama en el jquery de app.blade --}}
+                <tbody id="articles-content">
                     @foreach ($articles as $article)
                         <tr>
                             <td>{{$article->name}}</td>

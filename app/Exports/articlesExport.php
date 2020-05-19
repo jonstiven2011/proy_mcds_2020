@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Concerns\FromView;
 use App\Article;
 use App\Category;
 use App\User;
+use Auth;
 
 
 
@@ -25,7 +26,8 @@ class ArticlesExport implements FromView
             //'users' => User::all(),
             'articles' => $articles,
 			'categories' => Category::all(),
-            'articles' => Article::all()
+            'articles' => Article::all(),
+            'users' => User::all(),
         ]);
     }
 }

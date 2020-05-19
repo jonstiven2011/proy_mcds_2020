@@ -3,7 +3,7 @@
     <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
 @section('content')
 
-<h1 style="text-align:center;color:blank;">IMAGENES DE CATEGORIA</h1><br>
+<h1 style="text-align:center;color:blank;">CATÁLOGO DE VIDEOJUEGOS</h1><br>
 
     {{-- Seleccion de articulos --}}                                                             
     <div align="center">
@@ -15,6 +15,8 @@
                     <option value="{{ $cat->id}}">{{ $cat->name}}</option>
                 @endforeach
             </select>
+            {{-- Token o @csrf es esencial para que funcione el select --}}
+            @csrf
             <img src="{{ asset('imgs/loading.gif') }}" class="loader mt-5 d-none" height="100px">
             <i></i>
         </div>

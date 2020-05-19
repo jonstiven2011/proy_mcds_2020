@@ -27,6 +27,7 @@ class WelcomeController extends Controller
                               ->with('cats', $cats)
                               ->with('artsbycats', $artsbycats);
     }
+    
     // Filtro del select
     public function loadcat(Request $request)
     {
